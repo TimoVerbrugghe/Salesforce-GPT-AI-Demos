@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_GPT_Response_Apex</name>
+        <label>Get GPT Response (Apex)</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <actionName>GPTFlowActions</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>GPT_Response</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>gptInput</name>
+            <value>
+                <elementReference>Type_your_GPT_question_here</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>gptOutput</assignToReference>
+            <name>gptOutput</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <interviewLabel>Get a simple GPT Response {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get a simple GPT Response</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Get_GPT_Response</name>
+        <label>Get GPT Response</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Get_GPT_Response_Apex</targetReference>
+        </connector>
+        <fields>
+            <name>Type_your_GPT_question_here</name>
+            <dataType>String</dataType>
+            <fieldText>Type your GPT question here</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>GPT_Response</name>
+        <label>GPT Response</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>GPT_Output_TextField</name>
+            <fieldText>&lt;p&gt;This is the response from EinsteinGPT:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!gptOutput}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_GPT_Response</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>gptOutput</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,24 @@
+<template>
+    
+    <lightning-card title="Image Analysis" icon-name="utility:einstein">
+        <div class="slds-p-around_medium">
+        <lightning-file-upload
+            label="Upload picture"
+            name="fileUploader"
+            accept={acceptedFormats}
+            onuploadfinished={handleUploadFinished}
+        >
+        </lightning-file-upload>
+        <br>
+        <template if:true={showLoadingScreen}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+        <template if:true={showResult}>
+            <lightning-textarea name="imageDescribeResult" readonly value={result} label="The raw result of the first AI that describes the image." ></lightning-textarea>
+            <lightning-textarea name="imageGPTDescription" readonly value={resultGPT} label="What GPT makes of the raw result." ></lightning-textarea>
+        </template>
+
+    </div>
+    </lightning-card>
+
+</template>
