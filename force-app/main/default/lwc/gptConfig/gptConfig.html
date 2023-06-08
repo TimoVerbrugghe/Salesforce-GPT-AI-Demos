@@ -1,9 +1,7 @@
 <template>
     <p class="slds-p-horizontal_small">
-    
-        <lightning-input type="text" label="Einstein GPT Standard Prompt" onchange={handleInputChange} placeholder={egptStandardPrompt} name="egptStandardPrompt" required></lightning-input>
+        <lightning-textarea field-level-help="This will always be sent to any prompt you send to OpenAI, whether you're using one of the built-in components, use the Flow actions or use the chat assistant." name="egptStandardPrompt" label="Einstein GPT Standard Prompt" value={egptStandardPrompt} onchange={handleInputChange} required></lightning-textarea>
+        <br>
+        <lightning-button variant="brand" label="Set Config" title="Set Config" onclick={handleSetConfig}></lightning-button>        
     </p>
-        <p slot="footer">
-            <lightning-button variant="brand" label="Set Config" title="Set Config" onclick={handleSetConfig}></lightning-button>        
-        </p>
 </template>

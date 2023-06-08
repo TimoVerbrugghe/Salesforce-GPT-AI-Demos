@@ -8,10 +8,11 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
-    <label>Timo&apos;s AI Playground</label>
+    <label>AI &amp; GPT Playground</label>
     <navType>Standard</navType>
     <tabs>AI_Playground</tabs>
     <tabs>API_Key__c</tabs>
+    <tabs>Einstein_GPT_Config__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Timo_s_AI_Playground_UtilityBar</utilityBar>
 </CustomApplication>

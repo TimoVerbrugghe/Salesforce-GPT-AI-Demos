@@ -1,6 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 
-export default class egptBotMessage extends LightningElement {
+export default class EinsteinGPTChatMessage extends LightningElement {
 
     @track _message;
     wordCount = 0;
@@ -53,53 +53,12 @@ export default class egptBotMessage extends LightningElement {
         this.dispatchEvent(event);    
       }
 
-    handleAction(event){
-        let messageClone = JSON.parse(JSON.stringify(this._message));
-        let selectedAction;
-        let actionType = event.currentTarget.dataset.type;
-        if(actionType === 'card-action'){
-          let cardId = event.currentTarget.dataset.cardid;
-          let actionId = event.currentTarget.dataset.actionid;
-          messageClone.response.Cards.forEach((card) => {
-            if(card.Id === cardId){
-                card.Actions.forEach((action) => {
-                  if(action.Id === actionId){
-                    action.Disabled__c= true;
-                    selectedAction = action;    
-                  }
-                })
-            }
-          })
-        } else {
-          let actionId = event.currentTarget.dataset.actionid;
-          messageClone.response.Actions.forEach((action) => {
-            if(action.Id === actionId){
-                action.Disabled__c= true;
-                selectedAction = action;
-            }
-        })
-        }
-        this._message = messageClone;
-        let customEvent = new CustomEvent("egpt_messageaction", {
-          detail: {
-            value: selectedAction
-          },
-          bubbles: true,
-          composed: true
-        });
-        this.dispatchEvent(customEvent);
-    }    
-
     get showQuestion(){
         return this.type === 'question';
     }
 
     get showAnswer(){
         return this.type === 'answer' || this.type === 'unknown';
-    }
-
-    get unknown(){
-        return this.type === 'unknown';
     }
 
     renderedCallback(){

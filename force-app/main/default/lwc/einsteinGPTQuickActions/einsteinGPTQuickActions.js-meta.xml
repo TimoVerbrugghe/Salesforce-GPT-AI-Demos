@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage, lightning__RecordPage">
+            <property name="enableFirstButton" label="Display the First Button" type="Boolean" default="true" />
+            <property name="enableSecondButton" label="Display the Second Button" type="Boolean" default="true" />
+            <property name="enableThirdButton" label="Display the Third Button" type="Boolean" default="true" />
+            <property name="firstButtonInput" label="GPT Command to send when clicking on the first button" type="String" required="true" default="Generate repair instructions for a robot called 'Magic Bot' which has several functions including a function called 'Suction Gripper'. The suction gripper component has now failed with error code 400 - Component Wearout detected. The instructions should not be longer than 400 characters and should consist of 4 steps maximum. The response MUST be HTML formatted." />
+            <property name="secondButtonInput" label="GPT Command to send when clicking on the second button" type="String" required="true" default="Generate next best actions for a customer service representative called 'Magic Bot' which has several functions including a function called 'Suction Gripper'. The suction gripper component has now failed with error code 400 - Component Wearout detected. The next best actions should not be longer than 400 characters and should consist of 4 steps maximum. The response MUST be HTML formatted." />
+            <property name="thirdButtonInput" label="GPT Command to send when clicking on the third button" type="String" required="true" default="You are now being asked to provide a summary of a record in Salesforce. You will find the record data below in JSON that has been retrieved from the Salesforce Database. Be short, concise and give the user the key insights they need of this record. The record is of the type Asset. The response MUST be HTML formatted." />
+            <property name="firstButtonText" label="Label for first button" type="String" required="true" default="Summary" />
+            <property name="secondButtonText" label="Label for second button" type="String" required="true" default="Next Best Actions" />
+            <property name="thirdButtonText" label="Label for third button" type="String" required="true" default="Repair Instructions" />
+            <property name="enableRecordDetails" label="Add record context to GPT" description="When enabled, GPT will receive the context of the record when you click on any of the buttons" type="Boolean" default="true" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

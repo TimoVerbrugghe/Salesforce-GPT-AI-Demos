@@ -1,0 +1,38 @@
+<template>
+
+    <!-- When showing the original user question, show the avatar of the user -->
+    <template if:true={showQuestion}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-1 slds-p-around_medium card-question">
+                <div class="slds-grid slds-wrap">
+                    <div class="avatar-column"><img class="avatar" src={_message.avatar}></div>
+                    <div class="response-column slds-p-left_medium">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size_1-of-1">
+                                <lightning-formatted-rich-text value={_message.question}></lightning-formatted-rich-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- When showing an answer, show the avatar of Einstein -->
+    <template if:true={showAnswer}>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-1 slds-p-around_medium card-answer">
+                <div class="slds-grid slds-wrap">
+                    <div class="avatar-column"><img class="avatar" src="/resource/1680717507000/demoEinsteinGPTImages/dtwcp8gof2srrat2yze7.png"></div>
+                    <div class="response-column slds-p-left_medium">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size_1-of-1 slds-p-bottom_small">
+                                <lightning-formatted-rich-text value={typedAnswer}></lightning-formatted-rich-text>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

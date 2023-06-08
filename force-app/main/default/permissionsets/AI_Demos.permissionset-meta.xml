@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>Timos_AI_Playground</application>
+        <application>AI_GPT_Playground</application>
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
@@ -10,6 +10,18 @@
     </classAccesses>
     <classAccesses>
         <apexClass>AzureCognitiveServices</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>EinsteinGPTActions</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>EinsteinGPTConfigManagement</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>GPTFlowActions</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -22,14 +34,6 @@
     </classAccesses>
     <classAccesses>
         <apexClass>OpenAIParser</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>EinsteinGPTActions</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>GPTFlowActions</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <fieldPermissions>

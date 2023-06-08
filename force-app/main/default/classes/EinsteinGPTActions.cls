@@ -1,4 +1,14 @@
 public class EinsteinGPTActions {
+    
+    @AuraEnabled(cacheable=true)
+    public static User getUserDetails() {
+      try {
+        Id userId = UserInfo.getUserId();
+        return [SELECT Id, FirstName, SmallPhotoUrl FROM USER WHERE Id = :userId LIMIT 1];
+      } catch (Exception e) {
+        throw new AuraHandledException(e.getMessage());
+      }
+    }
 
     @AuraEnabled(cacheable=true)
     public static string getRecordDetails(String recordId){

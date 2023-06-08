@@ -7,25 +7,7 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>setAPIKeys</componentName>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>flowLayout</name>
-                    <value>oneColumn</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowName</name>
-                    <value>Get_a_simple_GPT_Response</value>
-                </componentInstanceProperties>
-                <componentName>flowruntime:interview</componentName>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>azureAnalyzeImage</componentName>
+                <componentName>aiGPTConfigManagement</componentName>
             </componentInstance>
         </itemInstances>
         <name>region2</name>
@@ -43,6 +25,56 @@
                     <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;Welcome to Timo&apos;s AI Playground!&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is version 0.0.1 Alpha.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For more information, please contact Timo Verbrugghe on Slack.&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>einsteinGPTChat</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>enableFirstButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRecordDetails</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableSecondButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableThirdButton</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>firstButtonInput</name>
+                    <value>Generate repair instructions for a robot called &apos;Magic Bot&apos; which has several functions including a function called &apos;Suction Gripper&apos;. The suction gripper component has now failed with error code 400 - Component Wearout detected. The instructions should not be longer than 400 characters and should consist of 4 steps maximum. The response MUST be HTML formatted.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>firstButtonText</name>
+                    <value>Summary</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>secondButtonInput</name>
+                    <value>Generate next best actions for a customer service representative called &apos;Magic Bot&apos; which has several functions including a function called &apos;Suction Gripper&apos;. The suction gripper component has now failed with error code 400 - Component Wearout detected. The next best actions should not be longer than 400 characters and should consist of 4 steps maximum. The response MUST be HTML formatted.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>secondButtonText</name>
+                    <value>Next Best Actions</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>thirdButtonInput</name>
+                    <value>You are now being asked to provide a summary of a record in Salesforce. You will find the record data below in JSON that has been retrieved from the Salesforce Database. Be short, concise and give the user the key insights they need of this record. The record is of the type Asset. The response MUST be HTML formatted.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>thirdButtonText</name>
+                    <value>Repair Instructions</value>
+                </componentInstanceProperties>
+                <componentName>einsteinGPTQuickActions</componentName>
             </componentInstance>
         </itemInstances>
         <name>region3</name>

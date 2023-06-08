@@ -2,12 +2,13 @@ public class EinsteinGPTConfigManagement {
 
     @AuraEnabled
     public static string getEinsteinGPTStandardPrompt() {
-        Einstein_GPT_Config__c egptConfigRecord = [SELECT Id, Standard_Prompt__c FROM Einstein_GPT_Config__c LIMIT 1];
+        List<Einstein_GPT_Config__c> egptConfigRecords = [SELECT Id, Standard_Prompt__c FROM Einstein_GPT_Config__c LIMIT 1];
 
-        if (egptConfigRecord != null) {
+        if (egptConfigRecords.size() > 0) {
+            Einstein_GPT_Config__c egptConfigRecord = egptConfigRecords[0];
             return egptConfigRecord.Standard_Prompt__c;
         } else {
-            return 'N/A';
+            return null;
         }
 
     }

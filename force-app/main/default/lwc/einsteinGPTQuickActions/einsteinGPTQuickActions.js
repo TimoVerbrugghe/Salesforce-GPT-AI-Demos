@@ -3,12 +3,7 @@ import getGPTResponse from '@salesforce/apex/OpenAI.getGPTResponse';
 import getRecordDetails from "@salesforce/apex/EinsteinGPTActions.getRecordDetails";
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-export default class ServiceChatSuggestions extends LightningElement {
-  thinking = false;
-  summaryThinking = false;
-  nbaThinking = false;
-  repairInstructionsThinking = false;
-
+export default class EinsteinGPTQuickActions extends LightningElement {
   containerHeight = 245;
   currentMessage;
   wordCount = 0;
@@ -19,13 +14,25 @@ export default class ServiceChatSuggestions extends LightningElement {
   recordDetails;
   error;
 
+  thinking = false;
+  firstButtonThinking = false;
+  secondButtonThinking = false;
+  thirdButtonThinking = false;
+
   @api recordId;
-  @api repairInstructionsResponse;
-  @api summaryInput;
-  @api nbaInput;
+  @api firstButtonInput;
+  @api secondButtonInput;
+  @api thirdButtonInput;
+
   @api firstButtonText;
   @api secondButtonText;
   @api thirdButtonText;
+
+  @api enableFirstButton;
+  @api enableSecondButton;
+  @api enableThirdButton;
+
+  @api enableRecordDetails;
 
   @wire(getRecordDetails, { recordId : '$recordId' })
   recordDetails({ data, error }) {
@@ -37,66 +44,62 @@ export default class ServiceChatSuggestions extends LightningElement {
         this.error = error;
         this.contacts = undefined;
     }
-}
+  }
 
   connectedCallback() {
   }
 
-  endChat(wait) {
-    // eslint-disable-next-line @lwc/lwc/no-async-operation
-    setTimeout(() => {
-      this.showSources = false;
-    }, 700);
-  }
-
   // Button Actions //
 
-  getRepairInstructions(event) {
+  getThirdButtonResponse(event) {
     this.resetMessage();
 
-    this.repairInstructionsThinking = true;
+    this.thirdButtonThinking = true;
     this.thinking = true;
 
     this.sources = [{ Name: "Einstein Knowledge" }, {Name: "Data Cloud"}];
-
-    console.log(this.repairInstructionsResponse);
     
-    this.getEinsteinGPTResponse(this.repairInstructionsResponse);
+    this.getEinsteinGPTResponse(this.thirdButtonInput);
 
   }
 
-  getSummary(event) {
+  getSecondButtonResponse(event) {
     this.resetMessage();
     
     this.thinking = true
-    this.summaryThinking = true;
+    this.secondButtonThinking = true;
 
     this.sources = [{ Name: "Sales Cloud" }, {Name: "Data Cloud"}];
-    
-    const question = this.summaryInput + this.recordDetails;
 
-    this.getEinsteinGPTResponse(question);
+    this.getEinsteinGPTResponse(this.secondButtonInput);
   
   }
 
-  getNextBestActions(event) {
+  getFirstButtonResponse(event) {
     this.resetMessage();
 
     this.thinking = true;
-    this.nbaThinking = true;
+    this.firstButtonThinking = true;
     
-    this.sources = [{ Name: "Sales Cloud" }, {Name: "Data Cloud"}];
+    this.sources = [{ Name: "Sales Cloud" }, { Name: "Data Cloud" }];
     
-    const question = this.nbaInput + this.recordDetails;
-    
-    this.getEinsteinGPTResponse(question);
+    this.getEinsteinGPTResponse(this.firstButtonInput);
   }
 
 
   // Back-end actions //
 
   getEinsteinGPTResponse(question) {
-    getGPTResponse({ openAIcommand: question })
+    let finalQuestion;
+
+    if (this.enableRecordDetails) {
+      const context = "Additionally, the user that has asked the question is looking at a specific Salesforce record. The type of record the user is currently looking at is " + this.objectApiName + ". You will find a complete summary of this record below in JSON format. Don't mention the term JSON in any way to the user. Only use what is below as additional information where you can base your answer on. If you use the information below in your answer, try to explain to the user exactly which information you used." + this.recordDetails;
+      finalQuestion = question + context;
+    } else {
+      finalQuestion = question;
+    };
+
+    getGPTResponse({ openAIcommand: finalQuestion })
       .then((result) => {
         this.showResponse(result);
         }
@@ -148,9 +151,9 @@ export default class ServiceChatSuggestions extends LightningElement {
 
   resetThinking() {
     this.thinking = false;
-    this.summaryThinking = false;
-    this.nbaThinking = false;
-    this.repairInstructionsThinking = false;
+    this.firstButtonThinking = false;
+    this.secondButtonThinking = false;
+    this.thirdButtonThinking = false;
   }
 
   resetMessage() {
