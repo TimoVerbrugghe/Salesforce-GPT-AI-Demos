@@ -22,6 +22,7 @@ export default class EinsteinGPTChat extends LightningElement {
   @api recordId;
   @api enableRecordDetails;
   @api objectApiName;
+  @api customContext;
   
   // ****** Starting State ******
 
@@ -88,14 +89,21 @@ export default class EinsteinGPTChat extends LightningElement {
     this.scrollToBottom();
     console.log('searching for answer');
 
+    let finalQuestion = question;
+
     if (this.enableRecordDetails) {
       const context = "Additionally, the user that has asked the question is looking at a specific Salesforce record. The type of record the user is currently looking at is " + this.objectApiName + ". You will find a complete summary of this record below in JSON format. Don't mention the term JSON in any way to the user. Only use what is below as additional information where you can base your answer on. If you use the information below in your answer, try to explain to the user exactly which information you used." + this.recordDetails;
-      const finalQuestion = question + context;
-      console.log(finalQuestion);
-      this.getEinsteinGPTResponse(finalQuestion); 
-    } else {
-      this.getEinsteinGPTResponse(question);
+      finalQuestion = finalQuestion + context;
     }
+
+    // If this is the first time we're sending a message in the chat history, add the custom context (if it isn't empty)
+    if (this.customContext && this.chatHistory.length() === 0) {
+      finalQuestion = this.customContext + finalQuestion;
+    }
+
+    console.log(finalQuestion);
+
+    this.getEinsteinGPTResponse(finalQuestion); 
        
     }
 

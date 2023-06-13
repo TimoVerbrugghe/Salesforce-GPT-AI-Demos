@@ -18,6 +18,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
   firstButtonThinking = false;
   secondButtonThinking = false;
   thirdButtonThinking = false;
+  summarizeChatThinking = false;
 
   @api recordId;
   @api firstButtonInput;
@@ -31,6 +32,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
   @api enableFirstButton;
   @api enableSecondButton;
   @api enableThirdButton;
+  @api enableSummarizeChatButton;
 
   @api enableRecordDetails;
 
@@ -84,6 +86,19 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.sources = [{ Name: "Sales Cloud" }, { Name: "Data Cloud" }];
     
     this.getEinsteinGPTResponse(this.firstButtonInput);
+  }
+
+  getSummarizeChatResponse(event) {
+    this.resetMessage();
+
+    this.thinking = true;
+    this.summarizeChatThinking = true;
+    
+    this.sources = [{ Name: "Service Cloud" }];
+
+    const response = "The Ford Assistant informs the customer about the dropping tire pressure and advises pulling over. The customer mentions the challenge of finding parking in a busy area. The assistant suggests activating the Intelligent Parking Assist System (IPAS) and schedules a tire fix appointment. The customer appreciates the proactive assistance. <br><br> Customer satisfaction rating: ⭐⭐⭐⭐.";
+
+    this.showResponse(response);
   }
 
 
@@ -154,6 +169,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.firstButtonThinking = false;
     this.secondButtonThinking = false;
     this.thirdButtonThinking = false;
+    this.summarizeChatThinking = false;
   }
 
   resetMessage() {

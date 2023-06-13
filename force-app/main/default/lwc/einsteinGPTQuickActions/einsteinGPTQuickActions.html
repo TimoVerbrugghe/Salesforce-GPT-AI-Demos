@@ -77,6 +77,28 @@
 
                     </lightning-layout-item>
                 </template>
+
+                <template if:true={enableSummarizeChatButton}>
+                    <lightning-layout-item flexibility=auto>
+
+                        <button class="slds-button slds-button_outline-brand eq-button" disabled={thinking} data-type="Post" onclick={getSummarizeChatResponse}>
+                            <template if:true={summarizeChatThinking}>
+                                <div class="slds-align_absolute-center">
+                                    <div class="slds-icon-eq slds-is-animated" title="Description of the icon when needed">
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <span class="slds-assistive-text">Text alternative when needed</span>
+                                    </div>
+                                </div>
+                            </template>
+                            <template if:false={thinking}> Summarize Chat
+                            </template>
+                            
+                        </button>
+
+                    </lightning-layout-item>
+                </template>
             </lightning-layout>
 
         </p>

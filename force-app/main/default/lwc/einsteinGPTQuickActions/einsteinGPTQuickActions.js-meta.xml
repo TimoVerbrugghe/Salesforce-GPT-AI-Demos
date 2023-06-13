@@ -18,6 +18,10 @@
             <property name="secondButtonText" label="Label for second button" type="String" required="true" default="Next Best Actions" />
             <property name="thirdButtonText" label="Label for third button" type="String" required="true" default="Repair Instructions" />
             <property name="enableRecordDetails" label="Add record context to GPT" description="When enabled, GPT will receive the context of the record when you click on any of the buttons" type="Boolean" default="true" />
+        
+            <property name="enableSummarizeChatButton" label="Display the Summarize Chat Button" type="Boolean" default="true" />
+            
+        
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
