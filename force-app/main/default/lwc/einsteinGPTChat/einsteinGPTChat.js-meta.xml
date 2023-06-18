@@ -10,6 +10,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage, lightning__AppPage, lightning__HomePage">
+            <property name="title" label="Title of the component" description="Will be shown at the top" default="Einstein Assistant" type="String" required="true"></property>
             <property name="enableRecordDetails" label="Add record context to GPT" description="EXPERIMENTAL - When enabled, GPT will receive the context of the record when you ask a question" type="Boolean" default="false" />
             <property name="customContext" label="Add custom context to GPT" description="When you type something here, it will be given as additional context to GPT when the first chat message is sent" type="String" />
         </targetConfig>

@@ -23,6 +23,7 @@ export default class EinsteinGPTChat extends LightningElement {
   @api enableRecordDetails;
   @api objectApiName;
   @api customContext;
+  @api title;
   
   // ****** Starting State ******
 

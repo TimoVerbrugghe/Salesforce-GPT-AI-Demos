@@ -18,7 +18,6 @@ export default class EinsteinGPTQuickActions extends LightningElement {
   firstButtonThinking = false;
   secondButtonThinking = false;
   thirdButtonThinking = false;
-  summarizeChatThinking = false;
 
   @api recordId;
   @api firstButtonInput;
@@ -32,9 +31,13 @@ export default class EinsteinGPTQuickActions extends LightningElement {
   @api enableFirstButton;
   @api enableSecondButton;
   @api enableThirdButton;
-  @api enableSummarizeChatButton;
+
+  @api firstButtonSources;
+  @api secondButtonSources;
+  @api thirdButtonSources;
 
   @api enableRecordDetails;
+  @api title;
 
   @wire(getRecordDetails, { recordId : '$recordId' })
   recordDetails({ data, error }) {
@@ -59,7 +62,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.thirdButtonThinking = true;
     this.thinking = true;
 
-    this.sources = [{ Name: "Einstein Knowledge" }, {Name: "Data Cloud"}];
+    this.sources = this.formatSources(this.thirdButtonSources);
     
     this.getEinsteinGPTResponse(this.thirdButtonInput);
 
@@ -71,7 +74,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.thinking = true
     this.secondButtonThinking = true;
 
-    this.sources = [{ Name: "Sales Cloud" }, {Name: "Data Cloud"}];
+    this.sources = this.formatSources(this.secondButtonSources);
 
     this.getEinsteinGPTResponse(this.secondButtonInput);
   
@@ -83,24 +86,16 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.thinking = true;
     this.firstButtonThinking = true;
     
-    this.sources = [{ Name: "Sales Cloud" }, { Name: "Data Cloud" }];
+    this.sources = this.formatSources(this.firstButtonSources);
     
     this.getEinsteinGPTResponse(this.firstButtonInput);
   }
 
-  getSummarizeChatResponse(event) {
-    this.resetMessage();
-
-    this.thinking = true;
-    this.summarizeChatThinking = true;
-    
-    this.sources = [{ Name: "Service Cloud" }];
-
-    const response = "The Ford Assistant informs the customer about the dropping tire pressure and advises pulling over. The customer mentions the challenge of finding parking in a busy area. The assistant suggests activating the Intelligent Parking Assist System (IPAS) and schedules a tire fix appointment. The customer appreciates the proactive assistance. <br><br> Customer satisfaction rating: ⭐⭐⭐⭐.";
-
-    this.showResponse(response);
+  formatSources(sourceString) {
+    const sources = sourceString.split(", ");
+    const formattedSources = sources.map(source => ({ Name: source }));
+    return formattedSources;
   }
-
 
   // Back-end actions //
 
@@ -169,7 +164,6 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.firstButtonThinking = false;
     this.secondButtonThinking = false;
     this.thirdButtonThinking = false;
-    this.summarizeChatThinking = false;
   }
 
   resetMessage() {
