@@ -1,0 +1,716 @@
+<template>
+    <div class="right">
+        <div class="slds-p-around_medium">
+            <div class="slds-grid slds-wrap">
+                <template if:true={showCampaignState}>
+                    <div class="slds-size_1-of-1">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-size_1-of-1">
+                                <c-page-header subtitle="Campaign" title="New Campaign" icon-name="standard:campaign" icon-type="slds" show-button=true button-label="Edit"></c-page-header>
+                            </div>
+                            <div class="slds-size_1-of-1 slds-card">
+                                <lightning-tabset>
+                                    <lightning-tab label="Campaign Overview">
+                                        <template if:true={published}>
+                                            <div class="slds-grid slds-wrap slds-p-left_medium slds-p-right_medium">
+                                                <div class="slds-size_1-of-1 builder-card">
+                                                    <div class="slds-card dpm-card-container">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-page-header--object-home slds-page-header_joined slds-page-header_bleed slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader slds-size_1-of-1">
+                                                                <div class="slds-page-header__row">
+                                                                    <div class="slds-page-header__col-title slds-align-middle">
+                                                                        <div class="slds-media">
+                                                                            <div class="slds-media__figure slds-align-middle">
+                                                                                <span class="slds-icon_container slds-icon-standard-opportunity slds-align-middle">
+                                                                                    <lightning-icon icon-name="custom:custom104" alternative-text="Landing Page Builer" size="medium"> </lightning-icon>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="slds-media__body">
+                                                                                <div class="slds-page-header__name">
+                                                                                    <div class="slds-page-header__name-title slds-align-middle">
+                                                                                        <h1 class="slds-align-middle">
+                                                                                            <span class="slds-page-header__title slds-truncate" title="Landing Page">Landing Page</span>
+                                                                                        </h1>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="slds-page-header__col-actions slds-align-middle">
+                                                                        <div class="slds-page-header__controls">
+                                                                            <div class="slds-page-header__control slds-align_middle">
+                                                                                <lightning-button-group>
+                                                                                    <lightning-button label="Update" onclick={publish}></lightning-button>
+                                                                                    <lightning-button label="Open in Experience Builder"></lightning-button>
+                                                                                </lightning-button-group>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="slds-size_1-of-1 card-shaded">
+                                                                <div class="builder-card slds-m-around_small">
+                                                                    <div class="slds-grid slds-wrap">
+                                                                        <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet">
+                                                                            <div class="slds-grid slds-wrap">
+                                                                                <div class="progress slds-align_absolute-center">
+                                                                                    <lightning-progress-ring value="100" variant="base-autocomplete">
+                                                                                    </lightning-progress-ring>
+                                                                                </div>
+                                                                                <div class="detail">
+                                                                                    <div class="slds-grid slds-wrap">
+                                                                                        <div class="slds-size_2-of-5 slds-align-middle">
+                                                                                            <h2 class="slds-text-heading_small"><strong>Park City Launch</strong></h2>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-grid slds-wrap">
+                                                                                                <div class="slds-size_1-of-1 ">
+                                                                                                    <p class="slds-item_label slds-text-color_weak">Status</p>
+                                                                                                </div>
+                                                                                                <div class="slds-size_1-of-1">
+                                                                                                    <span class={statusClass}>Published</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-grid slds-wrap">
+                                                                                                <div class="slds-size_1-of-1 ">
+                                                                                                    <p class="slds-item_label slds-text-color_weak">Last Modified Date</p>
+                                                                                                </div>
+                                                                                                <div class="slds-size_1-of-1">
+                                                                                                    <p><lightning-formatted-date-time value={now} year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"></lightning-formatted-date-time></p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-text-align_right">
+                                                                                                <lightning-button label="Activate" variant="brand" disabled={isButtonDisabled}></lightning-button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet audience-container">
+                                                                            <div class="slds-grid slds-wrap">
+                                                                                <div class="progress slds-align_absolute-center">
+                                                                                    <lightning-progress-ring value="100" variant="base-autocomplete">
+                                                                                    </lightning-progress-ring>
+                                                                                </div>
+                                                                                <div class="detail">
+                                                                                    <div class="slds-grid slds-wrap">
+                                                                                        <div class="slds-size_2-of-5 slds-align-middle">
+                                                                                            <h2 class="slds-text-heading_small"><strong>Audience </strong><a>Utah NTO Club Members</a></h2>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-grid slds-wrap">
+                                                                                                <div class="slds-size_1-of-1 ">
+                                                                                                    <p class="slds-item_label slds-text-color_weak">Segment Size</p>
+                                                                                                </div>
+                                                                                                <div class="slds-size_1-of-1">
+                                                                                                    <div class="slds-text-body_regular">2,568</div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-grid slds-wrap">
+                                                                                                <div class="slds-size_1-of-1 ">
+                                                                                                    <p class="slds-item_label slds-text-color_weak">Last Refreshed</p>
+                                                                                                </div>
+                                                                                                <div class="slds-size_1-of-1">
+                                                                                                    <p><lightning-formatted-date-time value={now} year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"></lightning-formatted-date-time></p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                            <div class="slds-text-align_right">
+                                                                                                <lightning-button label="Edit Audience"></lightning-button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet content-container">
+                                                                            <div class="slds-grid slds-wrap">
+                                                                                <div class="slds-size_1-of-1">
+                                                                                    <div class="slds-grid slds-wrap">
+                                                                                        <div class="progress slds-align_absolute-center">
+                                                                                            <lightning-progress-ring value="100" variant="base-autocomplete">
+                                                                                            </lightning-progress-ring>
+                                                                                        </div>
+                                                                                        <div class="detail">
+                                                                                            <div class="slds-grid slds-wrap slds-grid_align-spread">
+                                                                                                <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                                    <h2 class="slds-text-heading_small"><strong>Content</strong></h2>
+                                                                                                </div>
+                                                                                                <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                                    <div class="slds-text-align_right">
+                                                                                                        <lightning-button label="Edit Page"></lightning-button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="slds-size_1-of-1">
+                                                                                    <div class="slds-grid slds-wrap">
+                                                                                        <div class="slds-size_1-of-5">
+                                                                                        </div>
+                                                                                        <div class="slds-size_3-of-5">
+                                                                                            <div class="slds-grid slds-wrap">
+                                                                                                <div class="slds-size_1-of-1">
+                                                                                                    <div class="slds-grid slds-wrap composer-card slds-border_top slds-border_right slds-border_bottom slds-border_left">
+                                                                                                        <div class="slds-size_1-of-1 slds-border_bottom content-preview">
+                                                                                                        </div>
+                                                                                                        <div class="slds-size_1-of-1">
+                                                                                                            <p class="slds-p-around_xx-small"><lightning-icon class="slds-m-right_small landing-icon" icon-name="custom:custom104" alternative-text="Landing Page Builer" size="xx-small"></lightning-icon>New Landing Page</p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="slds-size_1-of-5">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <template if:false={published}>
+                                            <div class="slds-grid slds-wrap slds-p-left_medium slds-p-right_medium">
+                                                <div class="slds-size_1-of-1">
+                                                    <div class="slds-grid slds-wrap">
+                                                        <div class="slds-size_1-of-1">
+                                                            <div class="slds-grid slds-wrap slds-p-around_medium campaign-selector">
+                                                                <div class="slds-p-top_x-large">
+                                                                    <div class="slds-size_1-of-1 slds-p-bottom_medium">
+                                                                        <div class="slds-text-heading_medium slds-text-align_center">Select a Campaign Type</div>
+                                                                    </div>
+                                                                    <div class="slds-size_1-of-1 slds-p-bottom_x-large">
+                                                                        <div class="slds-text-body_regular slds-text-align_center">Select one of the folowing campaign templates to get started with.</div>
+                                                                    </div>
+                                                                    <div class="slds-grid slds-wrap">
+                                                                        <div class="slds-size_1-of-1">
+                                                                            <div class="slds-grid slds-wrap">
+                                                                                <div class="slds-size_1-of-3 slds-align_absolute-center slds-p-around_small">
+                                                                                    <div class="builder-card campaign-card">
+                                                                                        <div class="slds-grid slds-wrap slds-p-around_small">
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_x-small slds-align_absolute-center">
+                                                                                                <img style="width: 200px;" src="/resource/1680717507000/demoEinsteinGPTImages/akblulm2bh2cbynnydin.png" />
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_medium">
+                                                                                                <div class="slds-text-heading_small slds-text-align_center">Landing Page</div>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <div class="slds-text-body_regular slds-text-align_center">Create a custom landing page to bring your users into a new campaign.</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="slds-size_1-of-3 slds-align_absolute-center slds-p-around_small">
+                                                                                    <div class="builder-card campaign-card">
+                                                                                        <div class="slds-grid slds-wrap slds-p-around_small">
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_x-small slds-align_absolute-center">
+                                                                                                <img style="width: 200px;" src="/resource/1680717507000/demoEinsteinGPTImages/q11coux5hm6jdveifeps.png" />
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_medium">
+                                                                                                <div class="slds-text-heading_small slds-text-align_center">Single Email</div>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <div class="slds-text-body_regular slds-text-align_center">Customize a simple email to get your message out to a targeted audience.</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="slds-size_1-of-3 slds-align_absolute-center slds-p-around_small">
+                                                                                    <div class="builder-card campaign-card">
+                                                                                        <div class="slds-grid slds-wrap slds-p-around_small">
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_x-small slds-align_absolute-center">
+                                                                                                <img style="width: 200px;" src="/resource/1680717507000/demoEinsteinGPTImages/slpc9ctyunbz52joa7sz.png" />
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1 slds-p-bottom_medium">
+                                                                                                <div class="slds-text-heading_small slds-text-align_center">Drip Campaign</div>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <div class="slds-text-body_regular slds-text-align_center">Build a sequence of personalized emails to keep an audience engaged.</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </lightning-tab>
+                                    <lightning-tab label="Performance">
+                                        <div class="slds-grid slds-wrap slds-p-left_medium slds-p-right_medium">
+                                            <div class="slds-size_1-of-1 builder-card">
+                                                <div class="slds-card dpm-card-container">
+                                                    <div class="slds-grid slds-wrap">
+                                                        <div class="slds-page-header--object-home slds-page-header_joined slds-page-header_bleed slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader slds-size_1-of-1">
+                                                            <div class="slds-page-header__row">
+                                                                <div class="slds-page-header__col-title slds-align-middle">
+                                                                    <div class="slds-media">
+                                                                        <div class="slds-media__figure slds-align-middle">
+                                                                            <span class="slds-icon_container slds-icon-standard-opportunity slds-align-middle">
+                                                                                <lightning-icon class="landing-icon" icon-name="custom:custom104" alternative-text="Landing Page Builer" size="medium"> </lightning-icon>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="slds-media__body">
+                                                                            <div class="slds-page-header__name">
+                                                                                <div class="slds-page-header__name-title slds-align-middle">
+                                                                                    <h1 class="slds-align-middle">
+                                                                                        <span class="slds-page-header__title slds-truncate" title="Landing Page">Landing Page</span>
+                                                                                    </h1>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="slds-page-header__col-actions slds-align-middle">
+                                                                    <div class="slds-page-header__controls">
+                                                                        <div class="slds-page-header__control slds-align_middle">
+                                                                            <lightning-button-group>
+                                                                                <lightning-button label="Publish" onclick={publish}></lightning-button>
+                                                                                <lightning-button label="Open in Experience Builder"></lightning-button>
+                                                                            </lightning-button-group>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-size_1-of-1 card-shaded">
+                                                            <div class="builder-card slds-m-around_small">
+                                                                <div class="slds-grid slds-wrap">
+                                                                    <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet">
+                                                                        <div class="slds-grid slds-wrap">
+                                                                            <div class="progress slds-align_absolute-center">
+                                                                                <lightning-progress-ring value="0" variant="base-autocomplete">
+                                                                                </lightning-progress-ring>
+                                                                            </div>
+                                                                            <div class="detail">
+                                                                                <div class="slds-grid slds-wrap">
+                                                                                    <div class="slds-size_2-of-5 slds-align-middle">
+                                                                                        <h2 class="slds-text-heading_small"><strong>New Landing Page</strong></h2>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-grid slds-wrap">
+                                                                                            <div class="slds-size_1-of-1 ">
+                                                                                                <p class="slds-item_label slds-text-color_weak">Status</p>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <span class={statusClass}>{status}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-grid slds-wrap">
+                                                                                            <div class="slds-size_1-of-1 ">
+                                                                                                <p class="slds-item_label slds-text-color_weak">Last Modified Date</p>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <p><lightning-formatted-date-time value={now} year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"></lightning-formatted-date-time></p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-text-align_right">
+                                                                                            <lightning-button label="Activate" variant="brand" disabled={isButtonDisabled}></lightning-button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet audience-container">
+                                                                        <div class="slds-grid slds-wrap">
+                                                                            <div class="progress slds-align_absolute-center">
+                                                                                <lightning-progress-ring value="0" variant="base-autocomplete">
+                                                                                </lightning-progress-ring>
+                                                                            </div>
+                                                                            <div class="detail">
+                                                                                <div class="slds-grid slds-wrap">
+                                                                                    <div class="slds-size_2-of-5 slds-align-middle">
+                                                                                        <h2 class="slds-text-heading_small"><strong>Audience</strong></h2>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-grid slds-wrap">
+                                                                                            <div class="slds-size_1-of-1 ">
+                                                                                                <p class="slds-item_label slds-text-color_weak">Segment Size</p>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <div class="slds-text-body_regular"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-grid slds-wrap">
+                                                                                            <div class="slds-size_1-of-1 ">
+                                                                                                <p class="slds-item_label slds-text-color_weak">Last Refreshed</p>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                        <div class="slds-text-align_right">
+                                                                                            <lightning-button label="Edit Audience"></lightning-button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="slds-size_1-of-1 slds-box slds-has-bottom-magnet content-container">
+                                                                        <div class="slds-grid slds-wrap">
+                                                                            <div class="slds-size_1-of-1">
+                                                                                <div class="slds-grid slds-wrap">
+                                                                                    <div class="progress slds-align_absolute-center">
+                                                                                        <lightning-progress-ring value="0" variant="base-autocomplete">
+                                                                                        </lightning-progress-ring>
+                                                                                    </div>
+                                                                                    <div class="detail">
+                                                                                        <div class="slds-grid slds-wrap slds-grid_align-spread">
+                                                                                            <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                                <h2 class="slds-text-heading_small"><strong>Content</strong></h2>
+                                                                                            </div>
+                                                                                            <div class="slds-size_1-of-5 slds-align-middle">
+                                                                                                <div class="slds-text-align_right">
+                                                                                                    <lightning-button label="Edit Page"></lightning-button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="slds-size_1-of-1">
+                                                                                <div class="slds-grid slds-wrap">
+                                                                                    <div class="slds-size_1-of-5">
+                                                                                    </div>
+                                                                                    <div class="slds-size_3-of-5">
+                                                                                        <div class="slds-grid slds-wrap">
+                                                                                            <div class="slds-size_1-of-1">
+                                                                                                <div class="slds-grid slds-wrap composer-card slds-border_top slds-border_right slds-border_bottom slds-border_left">
+                                                                                                    <div class="slds-size_1-of-1 slds-border_bottom">
+                                                                                                        <div class="slds-grid slds-wrap slds-p-around_small">
+                                                                                                            <div class="slds-size_1-of-1 content-block slds-align_absolute-center">
+                                                                                                                <div class="slds-grid slds-wrap">
+                                                                                                                    <div class="slds-size_1-of-1">
+                                                                                                                        <img style="width: 280px;" src="/resource/1680717507000/demoEinsteinGPTImages/srnwciawhhyoqbrl7pfe.png" />
+                                                                                                                    </div>
+                                                                                                                    <div class="slds-size_1-of-1">
+                                                                                                                        <p class="slds-text-align_center slds-p-top_x-small">Select a landing page to share, create one from scratch or select from a template.</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="slds-size_1-of-1">
+                                                                                                        <p class="slds-p-around_xx-small"><lightning-icon class="slds-m-right_small" icon-name="custom:custom104" alternative-text="Landing Page Builer" size="xx-small"></lightning-icon>New Landing Page</p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-5">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </lightning-tab>
+                                    <lightning-tab label="Details"></lightning-tab>
+                                </lightning-tabset>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <template if:true={showBuilderState}>
+                    <div class="slds-size_1-of-1">
+                        <div class="slds-card dpm-card-container">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-page-header--object-home slds-page-header_joined slds-page-header_bleed slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader slds-size_1-of-1">
+                                    <div class="slds-page-header__row">
+                                        <div class="slds-page-header__col-title slds-align-middle">
+                                            <div class="slds-media">
+                                                <div class="slds-media__figure slds-align-middle">
+                                                    <span class="slds-icon_container slds-icon-standard-opportunity slds-align-middle">
+                                                        <lightning-icon icon-name="custom:custom104" alternative-text="Landing Page Builer" size="medium"> </lightning-icon>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body slds-align-middle">
+                                                    <div class="slds-page-header__name slds-align-middle">
+                                                        <div class="slds-page-header__name-title slds-align-middle">
+                                                            <h1 class="slds-align-middle">
+                                                                <span class="slds-page-header__title slds-truncate" title="Landing Page">Landing Page</span>
+                                                            </h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-page-header__col-actions slds-align-middle">
+                                            <div class="slds-page-header__controls">
+                                                <div class="slds-page-header__control slds-align_middle">
+                                                    <lightning-button-group>
+                                                        <lightning-button label="Publish" onclick={publish}></lightning-button>
+                                                        <lightning-button label="Open in Experience Builder"></lightning-button>
+                                                    </lightning-button-group>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-size_1-of-1 landing-page-card landing-page-builder-card slds-scrollable_y">
+                                    <template if:true={publishing}>
+                                        <div class="slds-grid slds-wrap slds-align_absolute-center" style="height:100%">
+                                            <div class="slds-size_1-of-1 slds-p-bottom_small">
+                                                <div class="slds-text-heading_small slds-text-align_center">Publishing...</div>
+                                            </div>
+                                            <div class="publishing-spinner-container">
+                                                <lightning-spinner class="publishing-spinner" size="medium"></lightning-spinner>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:false={publishing}>
+                                        <div class="slds-grid slds-wrap slds-align_absolute-center slds-p-top_small slds-p-bottom_small">
+                                            <div class="slds-size_2-of-3 landing-page-body-card">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-size_1-of-1 slds-p-top_small slds-p-right_small slds-p-left_small">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-size_1-of-1 landing-page-section landing-page-header slds-p-around_xx-small">
+                                                                <template if:true={headerLoading}>
+                                                                    <div class="header-spinner-container">
+                                                                        <lightning-spinner size="medium"></lightning-spinner>
+                                                                    </div>
+                                                                </template>
+                                                                <template if:false={headerLoading}>
+                                                                    <div style={headerStyle}>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-size_1-of-1 slds-p-top_small slds-p-right_small slds-p-left_small">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-size_1-of-1 landing-page-section landing-page-body slds-p-around_x-small">
+                                                                <div class="slds-grid slds-wrap">
+                                                                    <div class="slds-size_1-of-1">
+                                                                        <h2 class="slds-text-align_center slds-text-heading_small slds-p-bottom_small">
+                                                                            <strong> { title } </strong>
+                                                                        </h2>
+                                                                    </div>
+                                                                    <template if:true={messageLoading}>
+                                                                        <div class="content-spinner-container">
+                                                                            <lightning-spinner size="medium"></lightning-spinner>
+                                                                        </div>
+                                                                    </template>
+                                                                    <template if:false={messageLoading}>
+                                                                        <div class="slds-size_1-of-1 slds-text-body_regular slds-p-bottom_small">
+                                                                            <h2 class="slds-text-align_center">
+                                                                                <lightning-formatted-rich-text value={messageBody}></lightning-formatted-rich-text>
+                                                                            </h2>
+                                                                        </div>
+                                                                    </template>
+                                                                    <template if:true={showLeadForm}>
+                                                                        <template if:true={leadFormLoading}>
+                                                                            <div class="lead-form-spinner-container">
+                                                                                <lightning-spinner size="medium"></lightning-spinner>
+                                                                            </div>
+                                                                        </template>
+                                                                        <template if:false={leadFormLoading}>
+                                                                            <div class="slds-size_1-of-2 slds-p-bottom_small slds-align_absolute-center">
+                                                                                <div class="slds-grid slds-wrap slds-grid_align-center">
+                                                                                    <div class="slds-size_1-of-1 slds-p-right_x-small">
+                                                                                        <lightning-input label="First Name"></lightning-input>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-1 slds-p-right_x-small">
+                                                                                        <lightning-input label="Last Name"></lightning-input>
+                                                                                    </div>
+                                                                                    <div class="slds-size_1-of-1 slds-p-right_x-small">
+                                                                                        <lightning-input label="Email"></lightning-input>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="slds-size_1-of-1">
+                                                                                <div class="slds-text-align_center">
+                                                                                    <lightning-button label="Submit"></lightning-button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </template>
+                                                                    </template>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-size_1-of-1 slds-p-top_small slds-p-bottom_small slds-p-right_small slds-p-left_small">
+                                                        <div class="slds-grid slds-wrap">
+                                                            <div class="slds-size_1-of-1 landing-page-section slds-p-around_x-small">
+                                                                <template if:true={footerLoading}>
+                                                                    <div class="footer-spinner-container">
+                                                                        <lightning-spinner size="medium"></lightning-spinner>
+                                                                    </div>
+                                                                </template>
+                                                                <template if:false={footerLoading}>
+                                                                    <div class="slds-grid slds-wrap landing-page-footer">
+                                                                        <div class="slds-size_1-of-1 slds-p-around_small slds-align-middle">
+                                                                            <div class="slds-grid slds-wrap slds-grid_align-spread slds-align-middle">
+                                                                                <div class="slds-align-middle">
+                                                                                    <img style="height:60px" src="/resource/1680717507000/demoEinsteinGPTImages/bu9gdeffbirrmd3f2s9n.png" />
+                                                                                </div>
+                                                                                <div class="slds-align-middle">
+                                                                                    <p class="footer-text">© 2003-2023 Northern Trail Outfitters</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="slds-size_1-of-1 landing-page-card-footer">
+                                    <div class="slds-grid slds-wrap slds-p-around_x-small slds-align-middle">
+                                        <lightning-icon class="slds-align-middle" icon-name="custom:custom104" alternative-text="Landing Page Builer" size="x-small"></lightning-icon>
+                                        <div class="slds-col">
+                                            <p class="slds-p-left_x-small">New Landing Page</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- >div class="slds-grid slds-wrap">
+                                
+                                <div class="slds-size_1-of-1 card-shaded">
+                                    <div class="slds-m-around_small">
+                                        <div class="slds-grid slds-wrap slds-p-around_medium landing-page-builder-container">
+                                            <div class="slds-size_1-of-1">
+                                                <div class="slds-grid slds-wrap">
+                                                </div>      
+                                                <div class="slds-size_1-of-1 landing-page-card-footer">
+                                                    <div class="slds-grid slds-wrap slds-p-around_x-small slds-align-middle">
+                                                        <lightning-icon class="slds-align-middle" icon-name="custom:custom104" alternative-text="Landing Page Builer" size="x-small"></lightning-icon>
+                                                        <div class="slds-col"><p class="slds-p-left_x-small">New Landing Page</p></div>
+                                                    </div>
+                                                </div>      
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-size_1-of-1 slds-border_top card-shaded">
+                                    <div class="slds-grid slds-wrap slds-grid_align-spread slds-p-around_medium">
+                                        <div class="slds-col">
+                                            <lightning-button label="Back"></lightning-button>
+                                        </div>
+                                        <div class="slds-col slds-text-align_right">
+                                            <lightning-button icon-name="utility:expand" variant="brand" label="Open in Experience Builder"></lightning-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div-->
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+    <div class="toggle" onclick={toggleSidebar}>
+        <div class="slds-grid slds-wrap stretch">
+            <div class="slds-size_1-of-1 stretch">
+                <div class="icon slds-align_absolute-center stretch">
+                    <lightning-icon icon-name={sidebarIcon} size="xx-small"></lightning-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar left" style={toggleStyle}>
+        <div class="card-header slds-p-top_small slds-p-bottom_small slds-border_bottom">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <lightning-icon class="einstein-icon" icon-name="utility:einstein" size="medium"></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-card__header-title">Einstein Assistant</div>
+                    </div>
+                    <div class="slds-no-flex">
+                        <lightning-icon icon-name="utility:close" size="x-small" onclick={toggleSidebar}></lightning-icon>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <div class="scroller">
+            <template if:true={showEmptyPannelState}>
+                <div class="stretch">
+                    <div class="slds-grid slds-wrap stretch">
+                        <div class="slds-size_1-of-1 stretch">
+                            <div class="slds-grid slds-wrap slds-p-around_medium slds-align_absolute-center stretch">
+                                <div class="slds-size_1-of-1 slds-align_absolute-center">
+                                    <img style="max-width:60%" src="/resource/1680717507000/demoEinsteinGPTImages/l4sodx4l2pkorexhbw17.png" />
+                                </div>
+                                <div class="slds-size_1-of-1">
+                                    <h1 class="slds-text-heading_medium slds-p-top_medium slds-text-align_center">Welcome Michelle</h1>
+                                </div>
+                                <div class="slds-size_1-of-1 slds-p-left_xx-large slds-p-right_xx-large">
+                                    <p class="slds-text-body_regular slds-p-top_small slds-text-align_center">Einstein is here to help. Ask a question or make a request to generate a response.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:false={showEmptyPannelState}>
+                <div class="slds-grid slds-wrap">
+                    <template for:each={messages} for:item="message" for:index="i">
+                        <div class="slds-size_1-of-1" key={message.i}>
+                            <c-egpt-bot-message message={message}></c-egpt-bot-message>
+                        </div>
+                    </template>
+                    <template if:true={showSpinner}>
+                        <div class="spinner slds-size_1-of-1">
+                            <lightning-spinner size="small"></lightning-spinner>
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+        <div class="input-box slds-p-around_medium">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-1">
+                    <div class="slds-grid slds-wrap slds-grid_align-spread">
+                        <div class="slds-size_11-of-12">
+                            <lightning-input class="slds-p-right_x-small" type="text" label="Ask Einstein" oncommit={handleInputCommit}></lightning-input>
+                        </div>
+                        <div class="slds-size_1-of-12 slds-align-bottom slds-text-align_right">
+                            <lightning-button-icon icon-name="utility:send"></lightning-button-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

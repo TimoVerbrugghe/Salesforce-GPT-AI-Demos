@@ -29,8 +29,21 @@
                             <div class="slds-size_1-of-1 slds-p-bottom_small">
                                 <lightning-formatted-rich-text value={typedAnswer}></lightning-formatted-rich-text>
                             </div>
+                            <template if:false={typing}>
+                                <div class="slds-size_1-of-1">
+                                    <template if:true={_message.actions.length}>
+                                        <div class="slds-grid slds-wrap">
+                                            <template for:each={_message.actions} for:item="action">
+                                                <div key={action.Id} class="slds-p-right_small">
+                                                    <lightning-button data-actionid={action.Id} label={action.Name} variant={action.Variant__c} data-action={action.Name} icon-name={action.IconName__c} disabled={action.Disabled__c} onclick={handleAction}></lightning-button><br><br>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

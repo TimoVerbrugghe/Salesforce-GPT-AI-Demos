@@ -1,0 +1,272 @@
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 2;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  background-color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar > .scroller {
+  flex: 2;
+  overflow: auto;
+}
+
+
+
+.einstein-icon {
+  --sds-c-icon-color-foreground-default: #1b96ff;
+}
+
+.marketing-icon {
+  --sds-c-icon-color-foreground-default: #B60554;
+}
+
+.landing-icon {
+  --sds-c-icon-color-foreground-default: #5867E8;
+}
+
+
+
+
+.message {
+  display: flex;
+}
+
+.message > div {
+  flex: 2;
+}
+
+.message img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.spinner {
+  position: relative;
+  top: 20px;
+}
+
+.chart-img {
+  width: 100%;
+  height: 100%;
+}
+
+.toggle {
+  background-color: white;
+  border-left: 1px solid rgb(229, 229, 229);
+  border-right: 1px solid rgb(229, 229, 229);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 12px;
+}
+
+.sidebar > .scroller {
+  flex: 2;
+  overflow: auto;
+}
+
+.stretch {
+  height: 100%;
+}
+
+.input-box {
+  background-color: white;
+  box-shadow: 1px -1px 2px rgb(0 0 0 / 10%);
+}
+
+.card-header {
+  background-color: white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.builder-card {
+  position: relative;
+  border-width: 0.25px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+  border-radius: 0.25rem;
+  background-clip: padding-box;
+}
+
+.card-shaded {
+  background-color: #f3f3f3;
+}
+
+.slds-box {
+  background-color: white;
+  padding: 6px !important;
+}
+
+.landing-page-card {
+  height: 580px;
+  background-color: white;
+  border-radius: 0px !important;
+}
+
+.slds-badge {
+  margin-left: -5px;
+}
+
+.content-block {
+  height: 217px;
+}
+
+.overview-block {
+  height: 275px;
+}
+
+.audience-container {
+  border-radius: 0px important!;
+}
+
+.content-container {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.progress {
+  width: 5% !important;
+}
+
+.detail {
+  width: 95% !important;
+}
+
+.campaign-card {
+  position: relative;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+  border-radius: 0.25rem;
+  background-clip: padding-box;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  min-height:240px;
+}
+
+.campaign-selector {
+  height: 530px;
+}
+
+.landing-page-section {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: rgb(201, 201, 201);
+}
+
+.landing-page-header {
+  height: 125px;
+}
+
+.header-spinner-container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 115px;
+}
+
+.content-spinner-container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+}
+
+.footer-spinner-container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 75px;
+}
+
+.publishing-spinner-container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 75px;
+}
+
+.publishing-spinner{
+  background-color:#F3F3F3;
+}
+
+
+.lead-form-spinner-container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 110px;
+}
+
+.landing-page-body {
+  min-height: 258px;
+}
+
+.landing-page-footer {
+  height: 75px;
+  background: #BCB5AC;
+  color: #fff;
+}
+
+.landing-page-builder-card {
+  background-color: #F3F3F3;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+}
+
+.landing-page-body-card {
+  background-color: white;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+}
+
+.landing-page-builder-container {
+  background-color: white;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+}
+
+.landing-page-card-footer {
+  background-color: #f3f3f3;
+  border-width: 0px 0.5px 0.5px 0.5px;
+  border-style: solid;
+  border-color: rgb(201, 201, 201);
+}
+
+.footer-icon {
+  margin-bottom: -4px;
+}
+
+.footer-text{
+  font-size:9px;
+}
+
+.content-preview{
+  background-image: url('/resource/1680717507000/demoEinsteinGPTImages/c87dsxmdn2lpalsj5dzs.png');
+  background-position: top;
+  width: auto 100%;
+  height: 270px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

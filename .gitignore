@@ -29,6 +29,8 @@ node_modules/
 
 # MacOS system files
 .DS_Store
+._*
+__MACOSX*
 
 # Windows system files
 Thumbs.db
