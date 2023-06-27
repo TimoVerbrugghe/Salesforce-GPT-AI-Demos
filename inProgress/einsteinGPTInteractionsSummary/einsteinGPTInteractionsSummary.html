@@ -1,0 +1,71 @@
+<template>
+    <lightning-card>
+
+        <!--  Title -->
+
+        <h3 slot="title">
+            <lightning-icon class="einstein-icon slds-m-right_small" icon-name="utility:einstein" size="small"></lightning-icon> {title}
+        </h3>
+
+        <!-- Footer with Action Buttons -->
+
+        <p slot="footer">
+
+            <lightning-layout horizontal-align="space">
+
+                    <lightning-layout-item flexibility=auto>
+                        
+                        <button class="slds-button slds-button_outline-brand eq-button" disabled={thinking} data-type="Post" onclick={getFirstButtonResponse}>
+                            <template if:true={firstButtonThinking}>
+                                <div class="slds-align_absolute-center">
+                                    <div class="slds-icon-eq slds-is-animated" title="Description of the icon when needed">
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <div class="slds-icon-eq__bar"></div>
+                                        <span class="slds-assistive-text">Text alternative when needed</span>
+                                    </div>
+                                </div>
+                            </template>
+                            <template if:false={thinking}> {firstButtonText}
+                            </template>
+                            
+                        </button>
+
+                    </lightning-layout-item>
+            </lightning-layout>
+
+        </p>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-1 slds-p-right_medium slds-p-left_medium slds-p-bottom_xx-small">
+                <!-- Card Content -->
+                <div class={containerClass} style={containerStyle}>
+                        <div class="slds-size_1-of-1 slds-p-bottom_small slds-col">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-size_1-of-1 slds-col slds-p-bottom_small">
+                                    <div class={messageContainer}>
+                                        <lightning-formatted-rich-text value={suggestedMessage}></lightning-formatted-rich-text>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-1 slds-col slds-align-bottom">
+                            <div class="slds-grid slds-wrap">
+                                <template if:true={showSources}>
+
+                                    <div class="slds-size_1-of-1 slds-p-bottom_small slds-border_bottom"></div><br>
+
+                                            <div class="slds-grid slds-wrap">
+                                                <div class="slds-text-color_weak slds-p-right_small slds-align-middle">Sourced from</div>
+                                                <template for:each={sources} for:item="source" for:index="i">
+                                                    <span key={source.i} class="slds-badge">{source.Name}</span>
+                                                </template>
+                                            </div>
+                                </template>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+.button-icon{
+  --sds-c-icon-color-foreground-default:var(--slds-c-button-outline-brand-color-border);
+}
+
+.einstein-icon {
+  --sds-c-icon-color-foreground-default: #1b96ff;
+}
+
+.text-weak{
+  color: #c9c9c9;
+}
+
+.eq-button{
+  min-height:31.11px;
+  min-width:123.29px;
+}
