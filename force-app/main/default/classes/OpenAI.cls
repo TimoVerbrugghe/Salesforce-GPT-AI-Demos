@@ -5,7 +5,7 @@ public class OpenAI {
         // Standard boilerplate text that will go in front of ANY open AI command
 
         String finalCommand = getOpenAIDefaultInput() + openAIcommand;
-        
+
         // Create command for openAI
 
         Map<String, Object> payload = new Map<String, Object>();
@@ -50,7 +50,6 @@ public class OpenAI {
         };
 
         String payloadJson = JSON.serialize(payload);
-        System.debug(payloadJson);
 
         return sendOpenAIRequest(payloadJson);
 

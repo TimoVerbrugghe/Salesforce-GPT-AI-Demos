@@ -87,11 +87,17 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     this.firstButtonThinking = true;
     
     this.sources = this.formatSources(this.firstButtonSources);
+    console.log(this.sources);
     
     this.getEinsteinGPTResponse(this.firstButtonInput);
   }
 
   formatSources(sourceString) {
+    // Sources have to have something in it, so if user did not define them, we will define it for them
+    if (typeof sourceString === 'undefined' || typeof sourceString === null) {
+      sourceString = "Salesforce, Data Cloud";
+    }
+
     const sources = sourceString.split(", ");
     const formattedSources = sources.map(source => ({ Name: source }));
     return formattedSources;
@@ -108,6 +114,8 @@ export default class EinsteinGPTQuickActions extends LightningElement {
     } else {
       finalQuestion = question;
     };
+
+    console.log(finalQuestion);
 
     getGPTResponse({ openAIcommand: finalQuestion })
       .then((result) => {
