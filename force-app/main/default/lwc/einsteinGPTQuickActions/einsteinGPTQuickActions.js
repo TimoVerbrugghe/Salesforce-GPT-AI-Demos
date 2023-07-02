@@ -38,6 +38,7 @@ export default class EinsteinGPTQuickActions extends LightningElement {
 
   @api enableRecordDetails;
   @api title;
+  @api enableSummarizeChatButton;
 
   @wire(getRecordDetails, { recordId : '$recordId' })
   recordDetails({ data, error }) {

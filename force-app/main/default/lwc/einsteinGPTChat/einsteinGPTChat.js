@@ -108,11 +108,11 @@ export default class EinsteinGPTChat extends LightningElement {
        
     }
 
-  configureMessage(avatar, question, response, responseText, type) {
+  configureMessage(avatar, question, actions, responseText, type) {
     let message = {
       avatar: avatar,
       question: question,
-      response: response,
+      actions: actions,
       responseText: responseText,
       type: type
     };

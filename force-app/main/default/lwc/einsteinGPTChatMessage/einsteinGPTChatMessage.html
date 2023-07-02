@@ -31,7 +31,7 @@
                             </div>
                             <template if:false={typing}>
                                 <div class="slds-size_1-of-1">
-                                    <template if:true={_message.actions.length}>
+                                    <template if:true={hasActions}>
                                         <div class="slds-grid slds-wrap">
                                             <template for:each={_message.actions} for:item="action">
                                                 <div key={action.Id} class="slds-p-right_small">

@@ -88,11 +88,11 @@ export default class EinsteinGPTChat extends LightningElement {
     this.getEinsteinGPTResponse(finalQuestion);  
     }
 
-  configureMessage(avatar, question, response, responseText, type) {
+  configureMessage(avatar, question, actions, responseText, type) {
     let message = {
       avatar: avatar,
       question: question,
-      response: response,
+      actions: actions,
       responseText: responseText,
       type: type
     };
@@ -169,8 +169,7 @@ export default class EinsteinGPTChat extends LightningElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener("openeinstein", this.handleMessage, false);
-    window.removeEventListener("messageaction", this.handleMessage, false);
+    window.removeEventListener("egpt_messagetyping", this.handleMessageTyping, false);
   }
 
   postError(error){

@@ -76,6 +76,7 @@ public class OpenAI {
         OpenAIParser openaiResponse = new OpenAIParser();
         openaiResponse = OpenAIParser.parse(responseBody);
 
+        System.debug(openaiResponse);
         return openaiResponse.choices[0].message.content;
 
     }

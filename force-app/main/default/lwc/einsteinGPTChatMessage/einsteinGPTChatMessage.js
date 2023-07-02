@@ -6,6 +6,7 @@ export default class EinsteinGPTChatMessage extends LightningElement {
     wordCount = 0;
     typedAnswer = '';
     typing = true;
+    hasActions = false;
     @api
     get message() {
         return this._message;
@@ -14,6 +15,11 @@ export default class EinsteinGPTChatMessage extends LightningElement {
        this._message = value;
        if(value){
         this.type = value.type;
+        
+        if(value.actions) {
+          this.hasActions = true;
+        }
+
         if(this.type === 'answer' || this.type === 'unknown'){
             this.typeMessage(value.responseText);
         }

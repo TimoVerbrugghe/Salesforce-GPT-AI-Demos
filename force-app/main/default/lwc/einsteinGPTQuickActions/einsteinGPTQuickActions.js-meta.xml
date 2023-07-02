@@ -26,7 +26,6 @@
             <property name="thirdButtonInput" label="GPT Command to send when clicking on the third button" type="String" required="true" default="You are now being asked to provide a summary of a record in Salesforce. You will find the record data below in JSON that has been retrieved from the Salesforce Database. Be short, concise and give the user the key insights they need of this record. The record is of the type Asset. The response MUST be HTML formatted." />
             <property name="thirdButtonSources" label="Add a comma separated list of sources to display for the third button - If this remains empty then by default it will show Salesforce, Data Cloud as sources" type="String" default="Field Service"></property>
 
-                        
             <property name="enableRecordDetails" label="EXPERIMENTAL - Add record context to GPT" description="When enabled, GPT will receive the context of the record when you click on any of the buttons" type="Boolean" default="false" />
 
         </targetConfig>
