@@ -7,8 +7,12 @@
         <target>lightning__AppPage</target>
         <target>lightning__RecordPage</target>
         <target>lightning__HomePage</target>
+        <target>lightning__GlobalAction</target>
     </targets>
     <targetConfigs>
+        <targetConfig targets="lightning__GlobalAction">
+            <actionType>ScreenAction</actionType>
+        </targetConfig>
         <targetConfig targets="lightning__RecordPage, lightning__AppPage, lightning__HomePage">
             <property name="title" label="Title of the component" description="Will be shown at the top" default="Einstein Assistant" type="String" required="true"></property>
             <property name="enableRecordDetails" label="Add record context to GPT" description="EXPERIMENTAL - When enabled, GPT will receive the context of the record when you ask a question" type="Boolean" default="false" />

@@ -7,6 +7,14 @@
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
       "versionDescription": "EinsteinGPT Demo Components for Advanced and Visionary Demos. Several demo components that connect to OpenAI's GPT models."
+    },
+    {
+      "path": "force-app",
+      "package": "einsteinGPTDemosAdvanced",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "EinsteinGPT Demo Components for Advanced and Visionary Demos. Several demo components that connect to OpenAI's GPT models."
     }
   ],
   "name": "AIDemos",
@@ -15,6 +23,10 @@
   "sourceApiVersion": "52.0",
   "packageAliases": {
     "einsteinGPTDemosAdv": "0Ho7R000000TNIQSA4",
-    "einsteinGPTDemosAdv@0.1.0-1": "04t7R0000018qZNQAY"
+    "einsteinGPTDemosAdv@0.1.0-1": "04t7R0000018qZNQAY",
+    "einsteinGPTDemosAdvanced": "0Ho7R000000TNIVSA4",
+    "einsteinGPTDemosAdvanced@0.1.0-1": "04t7R0000018qdkQAA",
+    "einsteinGPTDemosAdvanced@0.1.0-2": "04t7R0000018qdpQAA",
+    "einsteinGPTDemosAdvanced@0.1.0-3": "04t7R0000018qduQAA"
   }
 }
