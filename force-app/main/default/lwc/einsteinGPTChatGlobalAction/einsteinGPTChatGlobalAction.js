@@ -23,7 +23,7 @@ export default class EinsteinGPTChat extends LightningElement {
   enableRecordDetails = false;
   @api objectApiName;
   customContext = false;
-  title = "Einstein Assistant";
+  title = "GPT Assistant";
   
   // ****** Starting State ******
 

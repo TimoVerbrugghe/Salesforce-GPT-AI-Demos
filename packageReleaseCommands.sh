@@ -4,6 +4,5 @@ sfdx package create --name einsteinGPTDemosAdvanced --description "EinsteinGPT D
 ## Create a version of the package
 sfdx package version create --package 0Ho7R000000TNIVSA4 --installation-key-bypass --wait 10 --code-coverage
 
-
 ## Release the package
 sfdx package version promote --package 04t7R0000018qdpQAA
