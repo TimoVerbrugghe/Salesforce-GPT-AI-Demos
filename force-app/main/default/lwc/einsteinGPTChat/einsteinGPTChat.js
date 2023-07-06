@@ -98,7 +98,7 @@ export default class EinsteinGPTChat extends LightningElement {
     }
 
     // If this is the first time we're sending a message in the chat history, add the custom context (if it isn't empty)
-    if (this.customContext && this.chatHistory.length() === 0) {
+    if (this.customContext && this.chatHistory.length === 0) {
       finalQuestion = this.customContext + finalQuestion;
     }
 
