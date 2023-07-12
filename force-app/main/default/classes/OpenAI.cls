@@ -6,6 +6,9 @@ public class OpenAI {
 
         String finalCommand = getOpenAIDefaultInput() + openAIcommand;
 
+        // Strip HTML tags so that OpenAI doesn't error out
+        finalCommand = finalCommand.stripHtmlTags();
+
         String openAIModel = getOpenAIModel();
 
         // Create command for openAI
@@ -30,6 +33,9 @@ public class OpenAI {
         for (Integer i = 0; i < chatHistory.size(); i++) {
 
             String message = chatHistory[i];
+            message = message.stripHtmlTags();
+            System.debug(message);
+
             String role = (Math.mod(i,2) == 0) ? 'user' : 'assistant';
 
             // The first message should ALWAYS include the default input as defined by the user
@@ -52,6 +58,7 @@ public class OpenAI {
         };
 
         String payloadJson = JSON.serialize(payload);
+        System.debug(payloadJson);
 
         return sendOpenAIRequest(payloadJson);
 

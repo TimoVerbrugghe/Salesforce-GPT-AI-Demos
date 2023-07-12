@@ -1,6 +1,6 @@
-global class EinsteinGPTFlowActionsChatResponse {
+global class GPTFlowActionsChatResponse {
 
-    @InvocableMethod(label='Get Chat GPT Response' description='Gives your input to GPT and then gives you back the response - only use this for chat purposes')
+    @InvocableMethod(callout=true label='Get GPT Response (Based on Chat Conversation)' description='Give a chat conversation to GPT to get the next message in the conversation. The input should be an array of text, each text part of a conversation.')
     global static List<GetGPTResponseResult> GetGPTResponses(List<GetGPTResponseRequest> requests) {
         List<GetGPTResponseResult> results = new List<GetGPTResponseResult>();
         for (GetGPTResponseRequest request : requests) {

@@ -1,6 +1,6 @@
-global class GPTFlowActions {
+global class GPTFlowActionsSimpleResponse {
 
-    @InvocableMethod(label='Get GPT Response' description='Gives your input to GPT and then gives you back the response')
+    @InvocableMethod(callout=true label='Get GPT Response' description='Gives your input to GPT and then gives you back the response')
     global static List<GetGPTResponseResult> GetGPTResponses(List<GetGPTResponseRequest> requests) {
         List<GetGPTResponseResult> results = new List<GetGPTResponseResult>();
         for (GetGPTResponseRequest request : requests) {
