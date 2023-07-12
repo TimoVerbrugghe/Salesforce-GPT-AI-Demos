@@ -6,10 +6,12 @@ public class OpenAI {
 
         String finalCommand = getOpenAIDefaultInput() + openAIcommand;
 
+        String openAIModel = getOpenAIModel();
+
         // Create command for openAI
 
         Map<String, Object> payload = new Map<String, Object>();
-        payload.put('model', 'gpt-3.5-turbo');
+        payload.put('model', openAIModel);
 
         List<Map<String, Object>> messages = new List<Map<String, Object>>();
         messages.add(new Map<String, Object>{'role' => 'user', 'content' => finalCommand});
@@ -73,6 +75,8 @@ public class OpenAI {
         // Send request, parse body & send message back
         String responseBody = HTTPRequests.postRequest(request);
 
+        System.debug(responseBody);
+
         OpenAIParser openaiResponse = new OpenAIParser();
         openaiResponse = OpenAIParser.parse(responseBody);
 
@@ -85,4 +89,10 @@ public class OpenAI {
         String defaultInput = EinsteinGPTConfigManagement.getEinsteinGPTStandardPrompt();
         return defaultInput;
     }
+
+    private static string getOpenAIModel() {
+        String openAIModel = EinsteinGPTConfigManagement.getEinsteinGPTModel();
+        return openAIModel;
+    }
+
 }

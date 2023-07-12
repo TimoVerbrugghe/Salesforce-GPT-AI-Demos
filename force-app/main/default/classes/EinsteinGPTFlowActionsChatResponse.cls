@@ -1,6 +1,6 @@
-global class GPTFlowActions {
+global class EinsteinGPTFlowActionsChatResponse {
 
-    @InvocableMethod(label='Get GPT Response' description='Gives your input to GPT and then gives you back the response')
+    @InvocableMethod(label='Get Chat GPT Response' description='Gives your input to GPT and then gives you back the response - only use this for chat purposes')
     global static List<GetGPTResponseResult> GetGPTResponses(List<GetGPTResponseRequest> requests) {
         List<GetGPTResponseResult> results = new List<GetGPTResponseResult>();
         for (GetGPTResponseRequest request : requests) {
@@ -11,7 +11,7 @@ global class GPTFlowActions {
 
     public static GetGPTResponseResult GetGPTResponse(GetGPTResponseRequest request) {
         try {
-            String gptOutput = OpenAI.getGPTResponse(request.gptInput);
+            String gptOutput = OpenAI.getGPTChatResponse(request.gptInput);
             GetGPTResponseResult result = new GetGPTResponseResult();
             result.gptOutput = gptOutput;
             return result;  
@@ -23,7 +23,7 @@ global class GPTFlowActions {
 
     global class GetGPTResponseRequest {
         @InvocableVariable(required=true)
-        global String gptInput;
+        global String[] gptInput;
     }  
 
     global class GetGPTResponseResult {
@@ -34,3 +34,4 @@ global class GPTFlowActions {
     class GetGPTResponseException extends Exception {}
 
 }
+

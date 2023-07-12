@@ -92,8 +92,8 @@ export default class EinsteinGPTChat extends LightningElement {
 
     let finalQuestion = question;
 
-    if (this.enableRecordDetails) {
-      const context = "Additionally, the user that has asked the question is looking at a specific Salesforce record. The type of record the user is currently looking at is " + this.objectApiName + ". You will find a complete summary of this record below in JSON format. Don't mention the term JSON in any way to the user. Only use what is below as additional information where you can base your answer on. If you use the information below in your answer, try to explain to the user exactly which information you used." + this.recordDetails;
+    if (this.enableRecordDetails && this.chatHistory.length === 0) {
+      const context = " Additionally, the user that has started this chat conversation is looking at a specific Salesforce record. The type of record the user is currently looking at is " + this.objectApiName + ". You will find a complete summary of this record below in JSON format. Don't mention the term JSON in any way to the user. Only use what is below as additional information where you can base your answer on. If you use the information below in your answer, try to explain to the user exactly which information you used." + this.recordDetails;
       finalQuestion = finalQuestion + context;
     }
 

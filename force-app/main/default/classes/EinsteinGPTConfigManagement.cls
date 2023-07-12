@@ -33,4 +33,22 @@ public class EinsteinGPTConfigManagement {
         }
     }
 
+
+    @AuraEnabled
+    public static string getEinsteinGPTModel(){
+        try {
+            return 'gpt-3.5-turbo';
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static void setEinsteinGPTModel(){
+        try {
+            
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
