@@ -21,7 +21,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>GPTFlowActions</apexClass>
+        <apexClass>GPTFlowActionsSimpleResponse</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>GPTFlowActionsChatResponse</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>

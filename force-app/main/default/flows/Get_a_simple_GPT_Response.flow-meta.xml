@@ -5,7 +5,7 @@
         <label>Get GPT Response (Apex)</label>
         <locationX>176</locationX>
         <locationY>278</locationY>
-        <actionName>GPTFlowActions</actionName>
+        <actionName>GPTFlowActionsSimpleResponse</actionName>
         <actionType>apex</actionType>
         <connector>
             <targetReference>GPT_Response</targetReference>
